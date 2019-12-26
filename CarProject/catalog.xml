@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:18306/CarServices/CarWebService?wsdl" uri="xml-resources/web-service-references/CarWebService/wsdl/localhost_18306/CarServices/CarWebService.wsdl"/>
+    <system systemId="http://localhost:18306/CarServices/CarWebService?xsd=1" uri="xml-resources/web-service-references/CarWebService/wsdl/localhost_18306/CarServices/CarWebService.xsd_1.xsd"/>
+</catalog>

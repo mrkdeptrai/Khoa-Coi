@@ -40,7 +40,7 @@ public class BookingFrame extends javax.swing.JFrame {
     public BookingFrame() {
         carServices = new CarWebService_Service();
         port = carServices.getCarWebServicePort();
-        
+        System.out.println("Helloworld");
         initComponents();
         loadAllBooking();
         showCustomer();

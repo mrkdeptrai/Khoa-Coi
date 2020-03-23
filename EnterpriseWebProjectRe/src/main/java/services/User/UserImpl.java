@@ -3,10 +3,12 @@ package services.User;
 import entity.UserEntity;
 import model.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import repository.UserRepository;
 
 import java.util.List;
 
+@Service
 public class UserImpl implements IUser {
 
     @Autowired
@@ -48,17 +50,17 @@ public class UserImpl implements IUser {
         return listStudent;
     }
 
-    @Override
-    public List<Object[]> checkLogin(String email, String password) {
-        int permissionID = 0;
-        int status = 0;
-        List<Object[]> list = checkLogin(email, password);
-        for (Object[] obj : list) {
-            permissionID = obj[0];
-            status = obj[1];
-        }
-        return list;
-    }
+//    @Override
+//    public List<Object[]> checkLogin(String email, String password) {
+//        int permissionID = 0;
+//        int status = 0;
+//        List<Object[]> list = checkLogin(email, password);
+//        for (Object[] obj : list) {
+//            permissionID = obj[0];
+//            status = obj[1];
+//        }
+//        return list;
+//    }
 
 
     @Override

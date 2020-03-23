@@ -19,7 +19,7 @@ public interface IUser {
 
     List<UserEntity> findAllStudent();
 
-    List<Object[]> checkLogin(String email, String password);
+//    List<Object[]> checkLogin(String email, String password);
 
     UserDTO insertUser(UserDTO permissionDTO);
 

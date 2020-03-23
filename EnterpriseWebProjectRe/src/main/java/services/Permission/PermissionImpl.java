@@ -3,10 +3,10 @@ package services.Permission;
 import entity.PermissionEntity;
 import model.PermissionDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import repository.PermissionRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

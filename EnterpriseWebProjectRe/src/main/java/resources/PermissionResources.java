@@ -4,6 +4,7 @@ import entity.PermissionEntity;
 import model.PermissionDTO;
 import model.response.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class PermissionResources {
     @Autowired
     private IPermission permissionService;
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<PermissionEntity>> findAllPermission(){
         List<PermissionEntity> listPermission = permissionService.findAllPermission();
         return ResponseObjectFactory.toResult(listPermission, HttpStatus.OK);

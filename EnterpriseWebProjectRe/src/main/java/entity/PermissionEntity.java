@@ -1,11 +1,9 @@
 package entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
-@Table
+@Table (name = "tblPermission")
 public class PermissionEntity {
 
     @Id

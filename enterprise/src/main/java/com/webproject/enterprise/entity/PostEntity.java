@@ -2,8 +2,8 @@ package com.webproject.enterprise.entity;
 
 import javax.persistence.*;
 
-@Entity(name = "tblpermission")
-public class PermissionEntity {
+@Entity(name = "tblPost")
+public class PostEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,6 +11,15 @@ public class PermissionEntity {
 
     @Column
     private String title;
+
+    @Column
+    private String body;
+
+    @Column
+    private int userID;
+
+    @Column
+    private int isPublic;
 
     @Column
     private String createdAt;
@@ -34,6 +43,30 @@ public class PermissionEntity {
         this.title = title;
     }
 
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    public int getIsPublic() {
+        return isPublic;
+    }
+
+    public void setIsPublic(int isPublic) {
+        this.isPublic = isPublic;
+    }
+
     public String getCreatedAt() {
         return createdAt;
     }
@@ -49,5 +82,4 @@ public class PermissionEntity {
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
-
 }

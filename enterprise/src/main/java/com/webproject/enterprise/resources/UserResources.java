@@ -37,8 +37,8 @@ public class UserResources {
     }
 
     @GetMapping(value = "/{name}")
-    public ResponseEntity<UserEntity> findUserByName(@PathVariable("name") String name){
-        UserEntity findUserByName = userService.findByName(name);
+    public ResponseEntity<List<UserEntity>> findUserByName(@PathVariable("name") String name){
+        List<UserEntity> findUserByName = userService.findByName(name);
         return ResponseObjectFactory.toResult(findUserByName, HttpStatus.OK);
     }
 
@@ -54,15 +54,15 @@ public class UserResources {
         return ResponseObjectFactory.toResult(listStudent, HttpStatus.OK);
     }
 
-//    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<List<Object[]>> checkLogin(@RequestParam String email, @RequestParam String password){
-//        userService.checkLogin(email,password);
-//        return ResponseObjectFactory.toResult(list, HttpStatus.OK);
-//    }
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Integer> checkLogin(@RequestParam String email, @RequestParam String password){
+        userService.checkLogin(email,password);
+        return ResponseObjectFactory.toResult(checkLogin(email,password), HttpStatus.OK);
+    }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<UserEntity> updatePermission(@RequestParam String password, @RequestParam String name, @RequestParam String dob, @RequestParam String gender, @RequestParam int phone, @RequestParam String address, @RequestParam String avatar, @RequestParam String updatedAt, @RequestParam int id){
-        userService.updateUser(password,name,dob,gender,phone,address,avatar,updatedAt,id);
+    public ResponseEntity<UserEntity> updatePermission(@RequestParam String password, @RequestParam String name, @RequestParam String dob, @RequestParam String gender, @RequestParam int phone, @RequestParam String address, @RequestParam String avatar, @RequestParam int role, @RequestParam int status, @RequestParam String updatedAt, @RequestParam int id){
+        userService.updateUser(password,name,dob,gender,phone,address,avatar,role,status,updatedAt,id);
         return ResponseObjectFactory.toResult("Successfully", HttpStatus.OK);
     }
 

@@ -4,8 +4,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table
+@Entity(name = "tblUser")
 public class UserEntity {
 
     @Id
@@ -35,6 +34,12 @@ public class UserEntity {
 
     @Column
     private String avatar;
+
+    @Column
+    private int role;
+
+    @Column
+    private int status;
 
     @Column
     private String createdAt;
@@ -112,6 +117,22 @@ public class UserEntity {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public String getCreatedAt() {

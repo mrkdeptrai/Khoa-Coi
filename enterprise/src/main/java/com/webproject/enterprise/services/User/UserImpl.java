@@ -33,8 +33,8 @@ public class UserImpl implements IUser {
     }
 
     @Override
-    public UserEntity findByName(String name) {
-        UserEntity findUserByName = userRepository.findByName(name);
+    public List<UserEntity> findByName(String name) {
+        List<UserEntity> findUserByName = userRepository.findByName(name);
         return findUserByName;
     }
 
@@ -50,18 +50,11 @@ public class UserImpl implements IUser {
         return listStudent;
     }
 
-//    @Override
-//    public List<Object[]> checkLogin(String email, String password) {
-//        int permissionID = 0;
-//        int status = 0;
-//        List<Object[]> list = checkLogin(email, password);
-//        for (Object[] obj : list) {
-//            permissionID = obj[0];
-//            status = obj[1];
-//        }
-//        return list;
-//    }
-
+    @Override
+    public Integer checkLogin(String email, String password) {
+        int status = checkLogin(email,password);
+        return status;
+    }
 
     @Override
     public UserEntity insertUser(UserEntity userEntity) {
@@ -69,7 +62,7 @@ public class UserImpl implements IUser {
     }
 
     @Override
-    public UserEntity updateUser(String password, String name, String dob, String gender, int phone, String address, String avatar, String updatedAt, int id) {
-        return userRepository.updateUser(password, name, dob, gender, phone, address, avatar, updatedAt, id);
+    public UserEntity updateUser(String password, String name, String dob, String gender, int phone, String address, String avatar,int role, int status, String updatedAt, int id) {
+        return userRepository.updateUser(password, name, dob, gender, phone, address, avatar,role,status, updatedAt, id);
     }
 }

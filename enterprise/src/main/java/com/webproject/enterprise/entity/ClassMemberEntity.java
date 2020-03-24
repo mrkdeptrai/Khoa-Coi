@@ -2,8 +2,7 @@ package com.webproject.enterprise.entity;
 
 import javax.persistence.*;
 
-@Entity
-@Table
+@Entity(name = "tblClassMember")
 public class ClassMemberEntity {
 
     @Id

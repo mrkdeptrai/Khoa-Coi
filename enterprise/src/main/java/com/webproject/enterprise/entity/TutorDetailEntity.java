@@ -2,8 +2,7 @@ package com.webproject.enterprise.entity;
 
 import javax.persistence.*;
 
-@Entity
-@Table
+@Entity(name = "tblTutorDetail")
 public class TutorDetailEntity {
 
     @Id

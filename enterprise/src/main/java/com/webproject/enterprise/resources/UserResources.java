@@ -54,14 +54,19 @@ public class UserResources {
         return ResponseObjectFactory.toResult(listStudent, HttpStatus.OK);
     }
 
-    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping("/login")
     public ResponseEntity<Integer> checkLogin(@RequestParam String email, @RequestParam String password){
         userService.checkLogin(email,password);
         return ResponseObjectFactory.toResult(checkLogin(email,password), HttpStatus.OK);
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<UserEntity> updatePermission(@RequestParam String password, @RequestParam String name, @RequestParam String dob, @RequestParam String gender, @RequestParam int phone, @RequestParam String address, @RequestParam String avatar, @RequestParam int role, @RequestParam int status, @RequestParam String updatedAt, @RequestParam int id){
+    public ResponseEntity<UserEntity> updatePermission(@RequestParam String password, @RequestParam String name, @RequestParam String dob,
+                                                       @RequestParam String gender, @RequestParam int phone, @RequestParam String address,
+                                                       @RequestParam String avatar, @RequestParam int role, @RequestParam int status, @RequestParam String updatedAt, @RequestParam int id){
+//        @RequestBody UserEntity userEntityObject
+//                UserEntity usser = userServce.update(userEntityObject)
+//        userService.update(userEntityObject)
         userService.updateUser(password,name,dob,gender,phone,address,avatar,role,status,updatedAt,id);
         return ResponseObjectFactory.toResult("Successfully", HttpStatus.OK);
     }

@@ -10,13 +10,15 @@ public interface IComment {
 
     CommentEntity findById(int id);
 
-    List<CommentEntity> findByTitle(String title);
+    List<CommentEntity> findByText(String text);
 
-    List<CommentEntity> findUserComment(int userID);
+    List<CommentEntity> findByUserId(int userId);
 
-    List<CommentEntity> findByPost(int postID);
+    List<CommentEntity> findByMeetingId(int meetingId);
 
     CommentEntity insertComment(CommentEntity commentEntity);
 
-    CommentEntity updateComment(String title, String updatedAt, int id);
+    CommentEntity updateComment(String text, int id);
+
+    void deleteComment(int id);
 }

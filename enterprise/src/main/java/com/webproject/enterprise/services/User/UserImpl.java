@@ -31,6 +31,11 @@ public class UserImpl implements IUser {
         UserEntity findUserByEmail = userRepository.findByEmail(email);
         return findUserByEmail;
     }
+    @Override
+    public List<UserEntity> searchEmail(String email){
+        List<UserEntity> searchEmail = userRepository.searchEmail(email);
+        return searchEmail;
+    }
 
     @Override
     public List<UserEntity> findByName(String name) {
@@ -51,18 +56,21 @@ public class UserImpl implements IUser {
     }
 
     @Override
-    public Integer checkLogin(String email, String password) {
-        int status = checkLogin(email,password);
-        return status;
+    public UserEntity checkLogin(String email, String password) {
+        return userRepository.checkLogin(email,password);
     }
 
     @Override
-    public UserEntity insertUser(UserEntity userEntity) {
+    public UserEntity insertUser(UserEntity userEntity) throws Exception {
+        UserEntity checkEmail = userRepository.findByEmail(userEntity.getEmail());
+        if(checkEmail != null){
+           throw new Exception("Email have been created !");
+        }
         return userRepository.insertUser(userEntity);
     }
 
     @Override
-    public UserEntity updateUser(String password, String name, String dob, String gender, int phone, String address, String avatar,int role, int status, String updatedAt, int id) {
-        return userRepository.updateUser(password, name, dob, gender, phone, address, avatar,role,status, updatedAt, id);
+    public UserEntity updateUser(String password, String name, String dob, String gender, String phone, String address, String avatar,int role, int id) {
+        return userRepository.updateUser(password, name, dob, gender, phone, address, avatar,role, id);
     }
 }

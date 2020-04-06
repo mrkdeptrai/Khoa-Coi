@@ -9,21 +9,24 @@ import java.util.List;
 
 @Repository
 public interface CommentRepository extends JpaRepository<CommentEntity,Integer> {
-    @Query(value = "SELECT * FROM tblComment WHERE id = ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM comment WHERE id = ?1", nativeQuery = true)
     CommentEntity findById(int id);
 
-    @Query(value = "SELECT * FROM tblComment WHERE title LIKE  %?1", nativeQuery = true)
-    List<CommentEntity> findByTitle(String title);
+    @Query(value = "SELECT * FROM comment WHERE text LIKE  %?1%", nativeQuery = true)
+    List<CommentEntity> findByText(String text);
 
-    @Query(value = "SELECT * FROM tblComment WHERE userID = ?1", nativeQuery = true)
-    List<CommentEntity> findUserComment(int userID);
+    @Query(value = "SELECT * FROM comment WHERE userId = ?1", nativeQuery = true)
+    List<CommentEntity> findUserId(int userId);
 
-    @Query(value = "SELECT * FROM tblComment WHERE postID = ?1", nativeQuery = true)
-    List<CommentEntity> findByPost(int postID);
+    @Query(value = "SELECT * FROM comment WHERE meetingId = ?1", nativeQuery = true)
+    List<CommentEntity> findByMeetingId(int meetingId);
 
-    @Query (value = "INSERT INTO tblComment (title,userID,postID,createdAt,updatedAt) values = ?1, ?2, ?3, ?4,?5", nativeQuery = true)
+    @Query (value = "INSERT INTO comment (userId,meetingId,text,createdAt) values = ?1, ?2, ?3, ?4", nativeQuery = true)
     CommentEntity insertComment(CommentEntity commentEntity);
 
-    @Query (value = "UPDATE tblComment SET title = ?1, updatedAt = ?2 WHERE id = ?3", nativeQuery = true)
-    CommentEntity updateComment(String title, String updatedAt, int id);
+    @Query (value = "UPDATE comment SET text = ?1 WHERE id = ?2", nativeQuery = true)
+    CommentEntity updateComment(String text, int id);
+
+    @Query (value = "DELETE FROM comment WHERE id = ?1", nativeQuery = true)
+    void deleteComment(int id);
 }

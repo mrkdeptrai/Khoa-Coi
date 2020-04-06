@@ -10,17 +10,20 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 
-    @Query(value = "SELECT * FROM tblUser WHERE id = ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM user WHERE id = ?1", nativeQuery = true)
     UserEntity findById(int id);
 
-    @Query(value = "SELECT * FROM tblUser WHERE email = ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM user WHERE email = ?1", nativeQuery = true)
     UserEntity findByEmail(String email);
 
-    @Query(value = "SELECT * FROM tblUser WHERE name LIKE  %?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM user WHERE email = %?1%", nativeQuery = true)
+    List<UserEntity> searchEmail(String emailSimilar);
+
+    @Query(value = "SELECT * FROM user WHERE name LIKE  %?1%", nativeQuery = true)
     List<UserEntity> findByName(String name);
 
-    @Query(value = "SELECT role FROM tblUser WHERE email = ?1 AND password = ?2 AND status = 1", nativeQuery = true)
-    Integer checkLogin(String email, String password);
+//    @Query(value = "SELECT * FROM tblUser WHERE email = ?1 AND password = md5(?2)", nativeQuery = true)
+//    UserEntity checkLogin(String email, String password);
 
 //    @Query(value = "SELECT id FROM tblUser WHERE email = ?1,password = ?2", nativeQuery = true)
 //    Integer checkLogin(String email, String password);
@@ -28,15 +31,18 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 //    @Query(value = "SELECT permissionID, status FROM tblUserPermission WHERE userID = ?1", nativeQuery = true)
 //    List<Object[]> checkPermission(int id);
 
-    @Query(value = "SELECT * FROM tblUser WHERE role = 2 AND status = 1", nativeQuery = true)
+    @Query(value = "SELECT * FROM user WHERE role = 2", nativeQuery = true)
     List<UserEntity> findAllTutor();
 
-    @Query(value = "SELECT * FROM tblUser WHERE role = 1 AND status = 1", nativeQuery = true)
+    @Query(value = "SELECT * FROM user WHERE role = 1", nativeQuery = true)
     List<UserEntity> findAllStudent();
 
-    @Query (value = "INSERT INTO tblUser(email,password,name,dob,gender,phone,address,avatar,role,status,createdAt,updatedAt) values = ?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12", nativeQuery = true)
+    @Query(value = "SELECT * FROM user WHERE role = 3", nativeQuery = true)
+    List<UserEntity> findAllAdmin();
+
+    @Query (value = "INSERT INTO user(email,password,name,avatar,role,tutorId) values = ?1, ?2, ?3, ?4, ?5, ?6", nativeQuery = true)
     UserEntity insertUser(UserEntity userEntity);
 
-    @Query (value = "UPDATE tblPermission SET password = ?1, name = ?2, dob = ?3, gender = ?4, phone = ?5, address = ?6, avatar = ?7, role = ?8, status = ?9, updatedAt = ?10 WHERE id = ?11", nativeQuery = true)
-    UserEntity updateUser(String password, String name, String dob, String gender, int phone, String address, String avatar,int role, int status, String updatedAt, int id);
+    @Query (value = "UPDATE user SET password = ?1, name = ?2, avatar = ?3 WHERE id = ?4", nativeQuery = true)
+    UserEntity updateUser(String password, String name, String avatar, int id);
 }

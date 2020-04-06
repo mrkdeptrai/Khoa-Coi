@@ -3,7 +3,7 @@ package com.webproject.enterprise.entity;
 import javax.persistence.*;
 
 @Entity()
-public class CommentEntity {
+public class MessageEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,7 +13,7 @@ public class CommentEntity {
     private int userId;
 
     @Column
-    private int meetingId;
+    private int roomId;
 
     @Column
     private String text;
@@ -37,12 +37,12 @@ public class CommentEntity {
         this.userId = userId;
     }
 
-    public int getMeetingId() {
-        return meetingId;
+    public int getRoomId() {
+        return roomId;
     }
 
-    public void setMeetingId(int meetingId) {
-        this.meetingId = meetingId;
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
     }
 
     public String getText() {

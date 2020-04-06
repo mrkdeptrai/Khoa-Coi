@@ -26,21 +26,21 @@ public class CommentImpl implements IComment {
     }
 
     @Override
-    public List<CommentEntity> findByTitle(String title) {
-        List<CommentEntity> findByTitle = commentRepository.findByTitle(title);
-        return findByTitle;
+    public List<CommentEntity> findByText(String text) {
+        List<CommentEntity> findByText = commentRepository.findByText(text);
+        return findByText;
     }
 
     @Override
-    public List<CommentEntity> findUserComment(int userID) {
-        List<CommentEntity> findUserComment = commentRepository.findUserComment(userID);
-        return findUserComment;
+    public List<CommentEntity> findByUserId(int userId) {
+        List<CommentEntity> findUserId = commentRepository.findUserId(userId);
+        return findUserId;
     }
 
     @Override
-    public List<CommentEntity> findByPost(int postID) {
-        List<CommentEntity> findByPost = commentRepository.findByPost(postID);
-        return findByPost;
+    public List<CommentEntity> findByMeetingId(int meetingId) {
+        List<CommentEntity> findByMeetingId = commentRepository.findByMeetingId(meetingId);
+        return findByMeetingId;
     }
 
     @Override
@@ -49,7 +49,12 @@ public class CommentImpl implements IComment {
     }
 
     @Override
-    public CommentEntity updateComment(String title, String updatedAt, int id) {
-        return commentRepository.updateComment(title,updatedAt,id);
+    public CommentEntity updateComment(String title, int id) {
+        return commentRepository.updateComment(title,id);
+    }
+
+    @Override
+    public void deleteComment(int id) {
+        commentRepository.deleteComment(id);
     }
 }

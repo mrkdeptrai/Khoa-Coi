@@ -13,15 +13,17 @@ public interface IUser {
 
     UserEntity findByEmail(String email);
 
+    List<UserEntity> searchEmail(String email);
+
     List<UserEntity> findByName(String name);
 
     List<UserEntity> findAllTutor();
 
     List<UserEntity> findAllStudent();
 
-    Integer checkLogin(String email, String password);
+    UserEntity checkLogin(String email, String password);
 
-    UserEntity insertUser(UserEntity userEntity);
+    UserEntity insertUser(UserEntity userEntity) throws Exception;
 
-    UserEntity updateUser(String password, String name, String dob, String gender, int phone, String address, String avatar,int role, int status, String updatedAt, int id);
+    UserEntity updateUser(String password, String name, String dob, String gender, String phone, String address, String avatar,int role, int id);
 }

@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(maxAge = 3600)
 @RestController
-@RequestMapping("/comment")
+@RequestMapping("/Comment")
 public class CommentResources {
 
     @Autowired
@@ -24,39 +25,45 @@ public class CommentResources {
         return ResponseObjectFactory.toResult(listComment, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<CommentEntity> findCommentById(@PathVariable("id") int id){
+    @GetMapping("/id")
+    public ResponseEntity<CommentEntity> findCommentById(@RequestParam int id){
         CommentEntity findCommentById = commentService.findById(id);
         return ResponseObjectFactory.toResult(findCommentById, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/{title}")
-    public ResponseEntity<List<CommentEntity>> findCommentByBody(@PathVariable("title") String title){
-        List<CommentEntity> findCommentByBody = commentService.findByTitle(title);
+    @GetMapping("/text")
+    public ResponseEntity<List<CommentEntity>> findCommentByBody(@RequestParam String text){
+        List<CommentEntity> findCommentByBody = commentService.findByText(text);
         return ResponseObjectFactory.toResult(findCommentByBody, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/{userID}")
-    public ResponseEntity<List<CommentEntity>> findCommentByUserId(@PathVariable("userID") int userID){
-        List<CommentEntity> findCommentByUserId = commentService.findUserComment(userID);
+    @GetMapping("/userId")
+    public ResponseEntity<List<CommentEntity>> findCommentByUserId(@RequestParam int userId){
+        List<CommentEntity> findCommentByUserId = commentService.findByUserId(userId);
         return ResponseObjectFactory.toResult(findCommentByUserId, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/{postID}")
-    public ResponseEntity<List<CommentEntity>> findCommentByPostId(@PathVariable("postID") int postID){
-        List<CommentEntity> findCommentByPostId = commentService.findByPost(postID);
-        return ResponseObjectFactory.toResult(findCommentByPostId, HttpStatus.OK);
+    @GetMapping("/meetingId")
+    public ResponseEntity<List<CommentEntity>> findCommentByMeetingId(@RequestParam int meetingId){
+        List<CommentEntity> findCommentByMeetingId = commentService.findByMeetingId(meetingId);
+        return ResponseObjectFactory.toResult(findCommentByMeetingId, HttpStatus.OK);
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<CommentEntity> updateComment(@RequestParam String title, @RequestParam String updatedAt, @RequestParam int id){
-        commentService.updateComment(title,updatedAt,id);
-        return ResponseObjectFactory.toResult("Successfully", HttpStatus.OK);
+    public ResponseEntity<CommentEntity> updateComment(@RequestParam String text, @RequestParam int id){
+        commentService.updateComment(text,id);
+        return ResponseObjectFactory.toResult("Update Successfully", HttpStatus.OK);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CommentEntity> insertComment(@RequestBody CommentEntity commentEntity){
         commentService.insertComment(commentEntity);
-        return ResponseObjectFactory.toResult("Successfully", HttpStatus.OK);
+        return ResponseObjectFactory.toResult("Insert Successfully", HttpStatus.OK);
+    }
+
+    @DeleteMapping("/id")
+    public ResponseEntity<CommentEntity> deleteComment(@RequestParam int id){
+        commentService.deleteComment(id);
+        return ResponseObjectFactory.toResult("Delete Successfully", HttpStatus.OK);
     }
 }

@@ -1,10 +1,8 @@
 package com.webproject.enterprise.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
-@Entity(name = "tblUser")
+@Entity()
 public class UserEntity {
 
     @Id
@@ -21,31 +19,13 @@ public class UserEntity {
     private String name;
 
     @Column
-    private String dob;
-
-    @Column
-    private String gender;
-
-    @Column
-    private int phone;
-
-    @Column
-    private String address;
-
-    @Column
     private String avatar;
 
     @Column
     private int role;
 
     @Column
-    private int status;
-
-    @Column
-    private String createdAt;
-
-    @Column
-    private String updatedAt;
+    private int tutorId;
 
     public int getId() {
         return id;
@@ -79,38 +59,6 @@ public class UserEntity {
         this.name = name;
     }
 
-    public String getDob() {
-        return dob;
-    }
-
-    public void setDob(String dob) {
-        this.dob = dob;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public int getPhone() {
-        return phone;
-    }
-
-    public void setPhone(int phone) {
-        this.phone = phone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getAvatar() {
         return avatar;
     }
@@ -127,28 +75,11 @@ public class UserEntity {
         this.role = role;
     }
 
-    public int getStatus() {
-        return status;
+    public int getTutorId() {
+        return tutorId;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setTutorId(int tutorId) {
+        this.tutorId = tutorId;
     }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
 }

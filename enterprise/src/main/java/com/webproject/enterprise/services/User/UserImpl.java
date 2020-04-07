@@ -56,11 +56,6 @@ public class UserImpl implements IUser {
     }
 
     @Override
-    public UserEntity checkLogin(String email, String password) {
-        return userRepository.checkLogin(email,password);
-    }
-
-    @Override
     public UserEntity insertUser(UserEntity userEntity) throws Exception {
         UserEntity checkEmail = userRepository.findByEmail(userEntity.getEmail());
         if(checkEmail != null){
@@ -70,7 +65,7 @@ public class UserImpl implements IUser {
     }
 
     @Override
-    public UserEntity updateUser(String password, String name, String dob, String gender, String phone, String address, String avatar,int role, int id) {
-        return userRepository.updateUser(password, name, dob, gender, phone, address, avatar,role, id);
+    public UserEntity updateUser(String password, String name, String avatar, int id) {
+        return userRepository.updateUser(password, name, avatar, id);
     }
 }

@@ -21,9 +21,9 @@ public interface IUser {
 
     List<UserEntity> findAllStudent();
 
-    UserEntity checkLogin(String email, String password);
+//    UserEntity checkLogin(String email, String password);
 
     UserEntity insertUser(UserEntity userEntity) throws Exception;
 
-    UserEntity updateUser(String password, String name, String dob, String gender, String phone, String address, String avatar,int role, int id);
+    UserEntity updateUser(String password, String name, String avatar, int id);
 }

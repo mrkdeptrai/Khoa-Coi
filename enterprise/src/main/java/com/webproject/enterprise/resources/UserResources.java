@@ -77,13 +77,12 @@ public class UserResources {
 
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<UserEntity> updatePermission(@RequestParam String password, @RequestParam String name, @RequestParam String dob,
-                                                       @RequestParam String gender, @RequestParam String phone, @RequestParam String address,
-                                                       @RequestParam String avatar, @RequestParam int role, @RequestParam int id){
+    public ResponseEntity<UserEntity> updatePermission(@RequestParam String password, @RequestParam String name,
+                                                       @RequestParam String avatar, @RequestParam int id){
 //        @RequestBody UserEntity userEntityObject
 //                UserEntity usser = userServce.update(userEntityObject)
 //        userService.update(userEntityObject)
-        userService.updateUser(password,name,dob,gender,phone,address,avatar,role,id);
+        userService.updateUser(password,name,avatar,id);
         return ResponseObjectFactory.toResult("Update Successfully", HttpStatus.OK);
     }
 
